@@ -1,53 +1,75 @@
 {
   "name": "slim",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "Ecommerce components library",
-  "author": "polysharp",
-  "license": "Creative Common",
+  "author": {
+    "name": "Polysharp",
+    "email": "support-slim@polysharp.fr",
+    "url": "https://reactioncommerce.com"
+  },
+  "homepage": "https://github.com/polysharp/slim",
   "repository": "https://github.com/polysharp/slim.git",
+  "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
-  "engines": {
-    "node": ">=10"
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/@polysharp"
   },
   "scripts": {
-    "build": "microbundle-crl --no-compress --format modern,cjs",
-    "start": "microbundle-crl watch --no-compress --format modern,cjs",
-    "prepare": "run-s build",
-    "test": "run-s test:unit test:lint test:build",
-    "test:build": "run-s build",
+    "start": "start-storybook -p 9009",
+    "build": "build-storybook",
+    "lib:start": "microbundle-crl watch --no-compress --format modern,cjs",
+    "lib:build": "microbundle-crl --no-compress --format modern,cjs",
+    "test": "run-s test:unit test:lint",
     "test:lint": "eslint .",
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
-    "test:watch": "react-scripts test --env=jsdom",
-    "predeploy": "cd example && npm install && npm run build",
-    "deploy": "gh-pages -d example/build"
+    "test:watch": "react-scripts test --env=jsdom"
   },
   "peerDependencies": {
-    "react": "^16.0.0"
+    "react": "^16.0.0",
+    "prop-types": "^15.7.2",
+    "styled-components": "^5.1.1"
   },
   "devDependencies": {
-    "microbundle-crl": "^0.13.10",
-    "babel-eslint": "^10.0.3",
+    "@commitlint/config-conventional": "^9.0.1",
+    "@storybook/addon-a11y": "^5.3.19",
+    "@storybook/addon-docs": "^5.3.19",
+    "@storybook/addon-storysource": "^5.3.19",
+    "@storybook/addon-viewport": "^5.3.19",
+    "@storybook/preset-create-react-app": "^3.1.2",
+    "@storybook/react": "^5.3.19",
+    "babel-eslint": "^10.1.0",
+    "commitlint": "^9.0.1",
     "cross-env": "^7.0.2",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.7.0",
-    "eslint-config-standard": "^14.1.0",
-    "eslint-config-standard-react": "^9.2.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-node": "^11.0.0",
-    "eslint-plugin-prettier": "^3.1.1",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react": "^7.17.0",
-    "eslint-plugin-standard": "^4.0.1",
-    "gh-pages": "^2.2.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "eslint": "^7.3.1",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.0",
+    "husky": "^4.2.5",
+    "jest": "^26.1.0",
+    "jest-junit": "^11.0.1",
+    "jest-styled-components": "^7.0.2",
+    "microbundle-crl": "^0.13.10",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.0.4",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "^3.4.1"
+    "prettier": "^2.0.5",
+    "semantic-release": "^17.1.0"
   },
   "files": [
     "dist"
-  ]
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run test:lint",
+      "commit-msg": "./node_modules/commitlint/cli.js -E HUSKY_GIT_PARAMS"
+    }
+  }
 }

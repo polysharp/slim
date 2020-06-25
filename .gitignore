@@ -7,9 +7,11 @@ node_modules
 # builds
 build
 dist
+storybook-static
 .rpt2_cache
 
 # misc
+.vscode
 .DS_Store
 .env
 .env.local
