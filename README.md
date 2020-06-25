@@ -27,4 +27,4 @@ class Example extends Component {
 
 ## License
 
-Creative Common © [polysharp](https://github.com/polysharp)
+MIT © [polysharp](https://github.com/polysharp)
