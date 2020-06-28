@@ -1,31 +1,19 @@
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { withKnobs, number } from '@storybook/addon-knobs';
 
 import Hidden from './Hidden.jsx';
 
-<Meta title="Miscellaneous" component={Hidden} />
+<Meta title="Core/Miscellaneous" component={Hidden} />
 
 # Overview
 
 <Preview withToolbar>
-  <Story name="Hidden">
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <Hidden sm>
-        <div style={{ height: '200px', width: '100%', border: '1px solid #000' }}>HIDDEN SM</div>
-      </Hidden>
-      <Hidden md>
-        <div style={{ height: '200px', width: '100%', border: '1px solid #000' }}>HIDDEN MD</div>
-      </Hidden>
-      <Hidden lg>
-        <div style={{ height: '200px', width: '100%', border: '1px solid #000' }}>HIDDEN LG</div>
-      </Hidden>
-      <Hidden xl>
-        <div style={{ height: '200px', width: '100%', border: '1px solid #000' }}>HIDDEN XL</div>
-      </Hidden>
-    </div>
+  <Story name="Hidden" parameters={{ decorators: [withKnobs] }}>
+    <Hidden sm>
+      <div style={{ height: '200px', width: '100%', border: '1px solid #000' }}>HIDDEN SM</div>
+    </Hidden>
   </Story>
 </Preview>
-
-<Props of={Hidden} />
 
 ## Usage
 
@@ -34,7 +22,7 @@ import Hidden from '@polysharp/slim/core/Hidden';
 // or
 import { Hidden } from '@polysharp/slim';
 
-<Hidden>
+<Hidden sm={true | false} md={true | false} lg={true | false} xl={true | false}>
   {children}
 <Hidden/>
 ```
