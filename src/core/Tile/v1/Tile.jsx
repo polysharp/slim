@@ -63,7 +63,6 @@ Tile.propTypes = {
     Element(s) display in the title
   */
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
-
   /**
     Starting column at `breakpoints` => [<sm, sm, md, lg, xl]
   */
