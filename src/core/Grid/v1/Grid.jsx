@@ -67,10 +67,10 @@ const GridWrapper = styled.div`
       ${rows[4] === 'auto'
         ? `grid-auto-rows: auto`
         : `grid-template-rows: repeat(${rows[4]}, minmax(0, 1fr))`};
-    }
 
-    row-gap: calc(${rowGap[4]} * 0.25rem);
-    column-gap: calc(${colGap[4]} * 0.25rem);
+      row-gap: calc(${rowGap[4]} * 0.25rem);
+      column-gap: calc(${colGap[4]} * 0.25rem);
+    }
   `}
 `;
 
