@@ -6,9 +6,6 @@ import { withBreakpoints } from 'react-breakpoints';
 - The user's name should always be present when using Avatar – either printed beside the avatar or in a tooltip.
 * */
 const Hidden = ({ children, sm, md, lg, xl, currentBreakpoint }) => {
-  if (currentBreakpoint === 'undefined')
-    console.error('Please wrap the application with the breakpoints provider');
-
   let visible = true;
 
   switch (currentBreakpoint) {
