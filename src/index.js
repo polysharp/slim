@@ -8,3 +8,6 @@ export * from './core/Grid';
 
 export { default as Tile } from './core/Tile';
 export * from './core/Tile';
+
+export { default as Hidden } from './core/Hidden';
+export * from './core/Hidden';
