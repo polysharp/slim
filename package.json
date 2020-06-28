@@ -1,6 +1,6 @@
 {
   "name": "slim",
-  "version": "0.0.0-development",
+  "version": "0.0.1-development",
   "description": "Ecommerce components library",
   "author": {
     "name": "Polysharp",
@@ -21,6 +21,7 @@
     "build": "build-storybook",
     "lib:start": "microbundle-crl watch --no-compress --format modern,cjs",
     "lib:build": "microbundle-crl --no-compress --format modern,cjs",
+    "prepublish": "run-s lib:build",
     "test": "run-s test:unit test:lint",
     "test:lint": "eslint .",
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
