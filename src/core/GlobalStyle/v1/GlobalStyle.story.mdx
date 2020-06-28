@@ -1,0 +1,28 @@
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import GlobalStyle from './GlobalStyle.jsx';
+
+<Meta title="Global/Global Style" component={GlobalStyle} />
+
+# Overview
+
+## Usage
+
+```jsx
+import GlobalStyle from '@polysharp/slim/core/GlobalStyle';
+// or
+import { GlobalStyle } from '@polysharp/slim';
+
+<SlimThemeProvider>
+  <GlobalStyle />
+  <App />
+<SlimThemeProvider/>;
+```
+
+## Settings
+
+Theme properties can be view with `useTheme()` hook.
+
+| Theme Prop           | Default                                                                                                                                                                              | Description                            |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------- |
+| `Global.fontFamilly` | `system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji` | Font familly apply to the HTML Element |
+| `Global.lineHeight`  | `1.5`                                                                                                                                                                                | Line height for html sub elements      |

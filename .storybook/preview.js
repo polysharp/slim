@@ -1,9 +1,11 @@
+import React from 'react';
 import { addDecorator, addParameters } from '@storybook/react';
 
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { withA11y } from '@storybook/addon-a11y';
 
-import './global.css';
+import { ThemeProvider } from 'styled-components';
+import { GlobalStyle } from '../src';
 
 const customViewports = {
   browser: {
@@ -28,8 +30,13 @@ addParameters({
       ...customViewports,
       ...INITIAL_VIEWPORTS,
     },
-    defaultViewport: 'laptop',
   },
 });
 
 addDecorator(withA11y);
+addDecorator((s) => (
+  <ThemeProvider theme={{ name: 'slim' }}>
+    <GlobalStyle />
+    {s()}
+  </ThemeProvider>
+));
