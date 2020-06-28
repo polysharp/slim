@@ -5,3 +5,6 @@ export * from './core/GlobalStyle';
 
 export { default as Grid } from './core/Grid';
 export * from './core/Grid';
+
+export { default as Tile } from './core/Tile';
+export * from './core/Tile';
