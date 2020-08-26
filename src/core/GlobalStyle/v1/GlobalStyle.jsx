@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     margin: 0;
+    overscroll-behavior-y: none;
   }
   main {
     display: block;
