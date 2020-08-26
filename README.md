@@ -1,28 +1,20 @@
-# slim
+# Slim
 
 > Ecommerce components library
 
-[![NPM](https://img.shields.io/npm/v/slim.svg)](https://www.npmjs.com/package/slim) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Code style](https://badgen.net/badge/code%20style/airbnb/ff5a5f?icon=airbnb)](https://github.com/airbnb/javascript)
+[![Formatter](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 ## Install
 
 ```bash
-npm install --save slim
+npm install --save @polysharp/slim
 ```
 
 ## Usage
 
-```jsx
-import React, { Component } from 'react'
-
-import MyComponent from 'slim'
-import 'slim/dist/index.css'
-
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
-}
+```bash
+npm run start
 ```
 
 ## License
