@@ -1,6 +1,6 @@
 /* ============ COMPONENTS ============ */
 
-export { default as Button } from './core/actions';
+export { Button, Fab } from './core/actions';
 
 export { Grid, Tile } from './core/layout';
 
