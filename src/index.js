@@ -10,7 +10,7 @@ export { default as Hidden } from './core/miscellaneous';
 
 export { default as GlobalStyle } from './core/style';
 
-export { default as Tag } from './core/typography';
+export { Tag, Price } from './core/typography';
 
 /* ============ UTILS ============ */
 export { getTextColor, preventDoubleClick } from './utils';
