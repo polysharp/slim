@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ExtraPropTypes from 'react-extra-prop-types';
 import styled, { css } from 'styled-components';
 
-import getTextColor from 'utils';
+import { getTextColor, preventDoubleClick } from 'utils';
 
 const ButtonStyled = styled.button`
   ${({ outline, color, customColor, customOnColor, theme }) => {
@@ -66,23 +66,64 @@ const ButtonStyled = styled.button`
   }
 `;
 
-const Button = ({ children, type, tiny, outline, rounded, color, customColor, customOnColor }) => (
-  <ButtonStyled
-    type={type}
-    tiny={tiny}
-    outline={outline}
-    rounded={rounded}
-    color={color}
-    customColor={customColor}
-    customOnColor={customOnColor}
-  >
-    {children}
-  </ButtonStyled>
-);
+const Button = ({
+  children,
+  type,
+  loading,
+  disable,
+  preventDoubleClicking,
+  onClick,
+  keyCode,
+  tiny,
+  outline,
+  rounded,
+  color,
+  customColor,
+  customOnColor,
+}) => {
+  const handleClick = () => {
+    if (!disable && !loading) onClick();
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.keyCode === keyCode) handleClick(event);
+  };
+
+  const handleClickWithPrevent = preventDoubleClick((event) => {
+    event.preventDefault();
+    handleClick();
+  });
+
+  const handleKeyPressWithPrevent = (event) => {
+    if (event.keyCode === keyCode) handleClickWithPrevent(event);
+  };
+
+  return (
+    <ButtonStyled
+      type={type}
+      disabled={disable}
+      onClick={preventDoubleClicking ? handleClickWithPrevent : handleClick}
+      onKeyPress={preventDoubleClicking ? handleKeyPressWithPrevent : handleKeyPress}
+      tiny={tiny}
+      outline={outline}
+      rounded={rounded}
+      color={color}
+      customColor={customColor}
+      customOnColor={customOnColor}
+    >
+      {children}
+    </ButtonStyled>
+  );
+};
 
 Button.propTypes = {
   children: PropTypes.node.isRequired,
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
+  loading: PropTypes.bool,
+  disable: PropTypes.bool,
+  preventDoubleClicking: PropTypes.bool,
+  onClick: PropTypes.func,
+  keyCode: PropTypes.number,
   tiny: PropTypes.bool,
   outline: PropTypes.bool,
   rounded: PropTypes.oneOf(['none', 'sm', 'md', 'lg', 'xl', 'full']),
@@ -96,6 +137,11 @@ Button.propTypes = {
 
 Button.defaultProps = {
   type: 'button',
+  loading: false,
+  disable: false,
+  preventDoubleClicking: true,
+  onClick: () => {},
+  keyCode: 13,
   tiny: false,
   outline: false,
   rounded: 'full',

@@ -48,10 +48,15 @@ const options = {
     defaultValue: 'default',
     groupId: 'Style',
   },
+  click: {
+    label: 'Prevent double click',
+    defaultValue: true,
+    groupId: 'Custom',
+  },
   label: {
     label: 'Label',
     defaultValue: 'Ajouter au panier',
-    groupId: 'Style',
+    groupId: 'Custom',
   },
 };
 
@@ -103,6 +108,33 @@ export const withIcon = () => (
       </svg>
       <span style={{ paddingLeft: '4px' }}>Ajouter au favoris</span>
     </div>
+  </Button>
+);
+
+export const withOnClick = () => (
+  <Button
+    onClick={() => console.log('Button cliked')}
+    preventDoubleClicking={boolean(
+      options.click.label,
+      options.click.defaultValue,
+      options.click.groupId
+    )}
+    tiny={boolean(options.tiny.label, options.tiny.defaultValue, options.tiny.groupId)}
+    outline={boolean(options.outline.label, options.outline.defaultValue, options.outline.groupId)}
+    rounded={select(
+      options.radius.label,
+      options.radius.options,
+      options.radius.defaultValue,
+      options.radius.groupId
+    )}
+    color={select(
+      options.color.label,
+      options.color.options,
+      options.color.defaultValue,
+      options.color.groupId
+    )}
+  >
+    {text(options.label.label, options.label.defaultValue, options.label.groupId)}
   </Button>
 );
 

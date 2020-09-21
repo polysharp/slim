@@ -11,7 +11,7 @@ export { default as Hidden } from './core/miscellaneous';
 export { default as GlobalStyle } from './core/style';
 
 /* ============ UTILS ============ */
-export { default as getTextColor } from './utils';
+export { getTextColor, preventDoubleClick } from './utils';
 
 /* ============ THEME ============ */
 export { default as defaultTheme } from './theme';

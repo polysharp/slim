@@ -97,5 +97,8 @@
       "!<rootDir>/node_modules/",
       "!src/**/*.{story,stories}.{js,jsx}"
     ]
+  },
+  "dependencies": {
+    "lodash.debounce": "^4.0.8"
   }
 }
