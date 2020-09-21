@@ -2,7 +2,7 @@
 import React from 'react';
 import { withKnobs, number } from '@storybook/addon-knobs';
 
-import Grid from '../../Grid';
+import Grid from '../../grid';
 import Tile from './Tile';
 
 export default {

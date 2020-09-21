@@ -1,11 +1,7 @@
-export { default as GlobalStyle } from './core/GlobalStyle';
-// export * from './core/GlobalStyle';
+export { Grid, Tile } from './core/layout';
 
-export { default as Grid } from './core/Grid';
-// export * from './core/Grid';
+export { default as Aside } from './core/menus';
 
-export { default as Tile } from './core/Tile';
-// export * from './core/Tile';
+export { default as Hidden } from './core/miscellaneous';
 
-export { default as Hidden } from './core/Hidden';
-// export * from './core/Hidden';
+export { default as GlobalStyle } from './core/style';
