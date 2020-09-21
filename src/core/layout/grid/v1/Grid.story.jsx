@@ -4,7 +4,7 @@ import { withKnobs, number } from '@storybook/addon-knobs';
 import Grid from './Grid';
 
 export default {
-  title: 'Core/Layout',
+  title: 'Core/Layout/Grid',
   decorators: [withKnobs],
   parameters: {
     component: Grid,

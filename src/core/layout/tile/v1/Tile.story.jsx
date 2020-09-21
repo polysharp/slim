@@ -6,7 +6,7 @@ import Grid from '../../grid';
 import Tile from './Tile';
 
 export default {
-  title: 'Core/Layout',
+  title: 'Core/Layout/Tile',
   decorators: [withKnobs],
   parameters: {
     component: Tile,
