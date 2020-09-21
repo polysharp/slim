@@ -66,6 +66,7 @@ const options = {
 
 export const normal = () => (
   <Fab
+    tooltip="Add to favourites"
     tiny={boolean(options.tiny.label, options.tiny.defaultValue, options.tiny.groupId)}
     outline={boolean(options.outline.label, options.outline.defaultValue, options.outline.groupId)}
     rounded={select(
@@ -86,6 +87,7 @@ export const normal = () => (
 
 export const withOnClick = () => (
   <Fab
+    tooltip="Add to favourites"
     onClick={() => console.log('Fab cliked')}
     preventDoubleClicking={boolean(
       options.click.label,
@@ -111,5 +113,9 @@ export const withOnClick = () => (
 );
 
 export const customColor = () => (
-  <Fab customColor={{ default: '#39c', hover: '#000' }} icon={<Icon />} />
+  <Fab
+    tooltip="Add to favourites"
+    customColor={{ default: '#39c', hover: '#000' }}
+    icon={<Icon />}
+  />
 );

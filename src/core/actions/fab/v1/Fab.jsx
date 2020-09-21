@@ -70,6 +70,7 @@ const FabStyled = styled.button`
 `;
 
 const Fab = ({
+  tooltip,
   type,
   icon,
   loading,
@@ -103,6 +104,7 @@ const Fab = ({
 
   return (
     <FabStyled
+      title={tooltip}
       type={type}
       disabled={disable}
       onClick={preventDoubleClicking ? handleClickWithPrevent : handleClick}
@@ -124,6 +126,10 @@ Fab.propTypes = {
     Content place in the fab
   */
   icon: PropTypes.node.isRequired,
+  /**
+    (HTML Attribute) title of the button (use for screen reader and tooltip on hover)
+  */
+  tooltip: PropTypes.string.isRequired,
   /**
     (HTML Attribute) type of the fab
   */

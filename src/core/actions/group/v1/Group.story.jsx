@@ -5,7 +5,7 @@ import { Button } from 'core/actions';
 import Group from './Group';
 
 export default {
-  title: 'Core/Actions/Button',
+  title: 'Core/Actions/Group',
   decorators: [],
   parameters: {
     component: Group,
@@ -15,7 +15,7 @@ export default {
 
 export const preview = () => (
   <Group>
-    <Button>Aujouter au panier</Button>
-    <Button>Résultats (8)</Button>
+    <Button tooltip="Add to cart">Aujouter au panier</Button>
+    <Button tooltip="8 results">Résultats (8)</Button>
   </Group>
 );

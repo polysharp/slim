@@ -71,6 +71,7 @@ const ButtonStyled = styled.button`
 
 const Button = ({
   children,
+  tooltip,
   type,
   loading,
   disable,
@@ -103,6 +104,7 @@ const Button = ({
 
   return (
     <ButtonStyled
+      title={tooltip}
       type={type}
       disabled={disable}
       onClick={preventDoubleClicking ? handleClickWithPrevent : handleClick}
@@ -124,6 +126,10 @@ Button.propTypes = {
     Content place in the button
   */
   children: PropTypes.node.isRequired,
+  /**
+    (HTML Attribute) title of the button (use for screen reader and tooltip on hover)
+  */
+  tooltip: PropTypes.string.isRequired,
   /**
     (HTML Attribute) type of the button
   */

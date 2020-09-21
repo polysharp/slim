@@ -62,6 +62,7 @@ const options = {
 
 export const withText = () => (
   <Button
+    tooltip="Add to cart"
     tiny={boolean(options.tiny.label, options.tiny.defaultValue, options.tiny.groupId)}
     outline={boolean(options.outline.label, options.outline.defaultValue, options.outline.groupId)}
     rounded={select(
@@ -83,6 +84,7 @@ export const withText = () => (
 
 export const withIcon = () => (
   <Button
+    tooltip="Add to cart"
     tiny={boolean(options.tiny.label, options.tiny.defaultValue, options.tiny.groupId)}
     outline={boolean(options.outline.label, options.outline.defaultValue, options.outline.groupId)}
     rounded={select(
@@ -115,6 +117,7 @@ export const withIcon = () => (
 
 export const withOnClick = () => (
   <Button
+    tooltip="Add to cart"
     onClick={() => console.log('Button cliked')}
     preventDoubleClicking={boolean(
       options.click.label,
@@ -141,7 +144,7 @@ export const withOnClick = () => (
 );
 
 export const customColor = () => (
-  <Button customColor={{ default: '#39c', hover: '#000' }}>
+  <Button tooltip="Add to cart" customColor={{ default: '#39c', hover: '#000' }}>
     {text(options.label.label, options.label.defaultValue, options.label.groupId)}
   </Button>
 );

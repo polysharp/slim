@@ -30,7 +30,13 @@ export const asideRightToLeft = () => {
       <Aside isOpen={asideOpen} requestClose={() => setAsideOpen(false)}>
         <Aside.Header>
           <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <Fab color="default" tiny icon={<CloseIcon />} onClick={() => setAsideOpen(false)} />
+            <Fab
+              tooltip="Close"
+              color="default"
+              tiny
+              icon={<CloseIcon />}
+              onClick={() => setAsideOpen(false)}
+            />
           </div>
         </Aside.Header>
         <Aside.Body>
@@ -40,10 +46,10 @@ export const asideRightToLeft = () => {
         </Aside.Body>
         <Aside.Footer>
           <Group>
-            <Button color="secondary" disable tiny>
+            <Button tooltip="Clear all filters" color="secondary" disable tiny>
               Effacer tout
             </Button>
-            <Button color="default" tiny>
+            <Button tooltip="Show 45 results" color="default" tiny>
               Résultat (45)
             </Button>
           </Group>
@@ -61,7 +67,13 @@ export const asideLeftToRight = () => {
       <Aside isOpen={asideOpen} requestClose={() => setAsideOpen(false)} openRightToLeft={false}>
         <Aside.Header>
           <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-            <Fab color="default" tiny icon={<CloseIcon />} onClick={() => setAsideOpen(false)} />
+            <Fab
+              tooltip="Close"
+              color="default"
+              tiny
+              icon={<CloseIcon />}
+              onClick={() => setAsideOpen(false)}
+            />
           </div>
         </Aside.Header>
         <Aside.Body>
@@ -71,10 +83,10 @@ export const asideLeftToRight = () => {
         </Aside.Body>
         <Aside.Footer>
           <Group>
-            <Button color="secondary" disable tiny>
+            <Button tooltip="Clear all filters" color="secondary" disable tiny>
               Effacer tout
             </Button>
-            <Button color="default" tiny>
+            <Button tooltip="Show 45 results" color="default" tiny>
               Résultat (45)
             </Button>
           </Group>
