@@ -86,7 +86,7 @@ const Button = ({
   };
 
   const handleKeyPress = (event) => {
-    if (event.keyCode === keyCode) handleClick(event);
+    if (event.keyCode === keyCode) handleClick();
   };
 
   const handleClickWithPrevent = preventDoubleClick((event) => {
@@ -117,21 +117,60 @@ const Button = ({
 };
 
 Button.propTypes = {
+  /**
+    Content place in the button
+  */
   children: PropTypes.node.isRequired,
+  /**
+    (HTML Attribute) type of the button
+  */
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
+  /**
+    Is the button loading?
+  */
   loading: PropTypes.bool,
+  /**
+    (HTML Attribute) Is the button disable?
+  */
   disable: PropTypes.bool,
+  /**
+    If false the user can click as fast as he can on the button
+  */
   preventDoubleClicking: PropTypes.bool,
+  /**
+    Event trigger when the user click the button
+  */
   onClick: PropTypes.func,
+  /**
+    Keycode used to trigger onKeyPressed (trigger the onClick method)
+  */
   keyCode: PropTypes.number,
+  /**
+    Set the padding to tiny based on theme settings
+  */
   tiny: PropTypes.bool,
+  /**
+    Outline the button
+  */
   outline: PropTypes.bool,
+  /**
+    Apply rounded corners on top / left / bottom / right
+  */
   rounded: PropTypes.oneOf(['none', 'sm', 'md', 'lg', 'xl', 'full']),
+  /**
+    Used the theme colors to style the button
+  */
   color: PropTypes.oneOf(['primary', 'secondary', 'outline', 'default']),
+  /**
+    Used the custom default / hover color you provide (text color is automatic)
+  */
   customColor: PropTypes.shape({
     default: ExtraPropTypes.color,
     hover: ExtraPropTypes.color,
   }),
+  /**
+    Used this color as text color instead of auto
+  */
   customOnColor: ExtraPropTypes.color,
 };
 
