@@ -5,65 +5,68 @@ import styled, { css } from 'styled-components';
 
 import { getTextColor, preventDoubleClick } from 'utils';
 
+const THEME_KEY = 'Button';
+
 const ButtonStyled = styled.button`
-  ${({ outline, color, customColor, customOnColor, theme }) => {
-    return outline
+  &:focus {
+    outline: none;
+  }
+
+  ${({ outline, color, customColor, customOnColor, theme }) =>
+    outline
       ? css`
           border: ${customColor
             ? `1px solid ${customColor.default}`
-            : `1px solid ${theme.Button.color[color].default}`};
+            : `1px solid ${theme[THEME_KEY].color[color].default}`};
           color: ${customOnColor ? getTextColor(customOnColor) : '#000000'};
 
           &:hover,
           &:focus {
             border: ${customColor
               ? `1px solid ${customColor.hover}`
-              : `1px solid ${theme.Button.color[color].hover}`};
+              : `1px solid ${theme[THEME_KEY].color[color].hover}`};
           }
         `
       : css`
           background-color: ${customColor
             ? customColor.default
-            : theme.Button.color[color].default};
+            : theme[THEME_KEY].color[color].default};
           color: ${customColor
             ? getTextColor(customColor.default)
-            : getTextColor(theme.Button.color[color].default)};
+            : getTextColor(theme[THEME_KEY].color[color].default)};
 
           &:hover,
           &:focus {
-            background-color: ${customColor ? customColor.hover : theme.Button.color[color].hover};
+            background-color: ${customColor
+              ? customColor.hover
+              : theme[THEME_KEY].color[color].hover};
             color: ${customColor
               ? getTextColor(customColor.hover)
-              : getTextColor(theme.Button.color[color].hover)};
+              : getTextColor(theme[THEME_KEY].color[color].hover)};
           }
-        `;
-  }}
+        `}
 
   ${({ rounded, theme }) => css`
-    border-radius: ${theme.Button.radius[rounded].default};
+    border-radius: ${theme[THEME_KEY].radius[rounded].default};
 
     &:hover,
     &:focus {
-      border-radius: ${theme.Button.radius[rounded].hover};
+      border-radius: ${theme[THEME_KEY].radius[rounded].hover};
     }
   `}
 
   ${({ tiny, theme }) =>
     tiny
       ? css`
-          padding: ${theme.Button.padding.tiny.y} ${theme.Button.padding.tiny.x};
-          font-size: ${theme.Button.font.size.tiny};
-          font-weight: ${theme.Button.font.weight.tiny};
+          padding: ${theme[THEME_KEY].padding.tiny.y} ${theme[THEME_KEY].padding.tiny.x};
+          font-size: ${theme[THEME_KEY].font.size.tiny};
+          font-weight: ${theme[THEME_KEY].font.weight.tiny};
         `
       : css`
-          padding: ${theme.Button.padding.default.y} ${theme.Button.padding.default.x};
-          font-size: ${theme.Button.font.size.default};
-          font-weight: ${theme.Button.font.weight.default};
+          padding: ${theme[THEME_KEY].padding.default.y} ${theme[THEME_KEY].padding.default.x};
+          font-size: ${theme[THEME_KEY].font.size.default};
+          font-weight: ${theme[THEME_KEY].font.weight.default};
         `};
-
-  &:focus {
-    outline: none;
-  }
 `;
 
 const Button = ({
