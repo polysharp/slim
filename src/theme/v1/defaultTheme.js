@@ -62,6 +62,19 @@ const defaultTheme = {
       tiny: '.5rem',
     },
   },
+  Tag: {
+    color: {
+      info: '#0077c1',
+      warning: '#ca5008',
+      danger: '#ed022a',
+    },
+    font: {
+      size: {
+        default: '0.875rem',
+        tiny: '0.75rem',
+      },
+    },
+  },
 };
 
 export default defaultTheme;
