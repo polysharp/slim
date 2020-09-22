@@ -31,7 +31,7 @@ const wrapper = {
         },
 };
 
-const AsideOverlay = styled(motion.div)`
+const DrawerOverlay = styled(motion.div)`
   position: fixed;
   z-index: 9999;
   top: 0;
@@ -42,7 +42,7 @@ const AsideOverlay = styled(motion.div)`
   background: rgba(0, 0, 0, 0.15);
 `;
 
-const AsideWrapper = styled(motion.aside)`
+const DrawerWrapper = styled(motion.aside)`
   position: absolute;
   top: 0;
   right: 0;
@@ -55,37 +55,37 @@ const AsideWrapper = styled(motion.aside)`
   width: 31.25rem;
 `;
 
-const AsideHeader = styled.div`
+const DrawerHeader = styled.div`
   padding: 1.5rem 2rem;
   background-color: #ffffff;
 `;
 
-const AsideBody = styled.div`
+const DrawerBody = styled.div`
   flex-grow: 1;
   overflow-y: auto;
   padding: 1.5rem 2.5rem;
 `;
 
-const AsideFooter = styled.div`
+const DrawerFooter = styled.div`
   padding: 1.5rem 2.5rem;
   background-color: #ffffff;
 `;
 
-const Aside = ({ children, isOpen, requestClose, closeOnOutsideClick, openRightToLeft }) => {
+const Drawer = ({ children, isOpen, requestClose, closeOnOutsideClick, openRightToLeft }) => {
   const onOutsideClick = () => {
     if (closeOnOutsideClick) requestClose();
   };
 
   return (
     <div>
-      <AsideOverlay
+      <DrawerOverlay
         isOpen={isOpen}
         onClick={onOutsideClick}
         initial="close"
         animate={isOpen ? 'open' : 'close'}
         variants={overlay}
       />
-      <AsideWrapper
+      <DrawerWrapper
         inital="close"
         animate={isOpen ? 'open' : 'close'}
         variants={wrapper}
@@ -93,16 +93,16 @@ const Aside = ({ children, isOpen, requestClose, closeOnOutsideClick, openRightT
         custom={openRightToLeft}
       >
         {children}
-      </AsideWrapper>
+      </DrawerWrapper>
     </div>
   );
 };
 
-Aside.Header = AsideHeader;
-Aside.Body = AsideBody;
-Aside.Footer = AsideFooter;
+Drawer.Header = DrawerHeader;
+Drawer.Body = DrawerBody;
+Drawer.Footer = DrawerFooter;
 
-Aside.propTypes = {
+Drawer.propTypes = {
   /**
     Aside content to display (TODO: replace with custom function for Header / Body / Footer)
   */
@@ -125,9 +125,9 @@ Aside.propTypes = {
   openRightToLeft: PropTypes.bool,
 };
 
-Aside.defaultProps = {
+Drawer.defaultProps = {
   closeOnOutsideClick: true,
   openRightToLeft: true,
 };
 
-export default Aside;
+export default Drawer;

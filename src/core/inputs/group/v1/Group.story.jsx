@@ -1,11 +1,11 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 
-import { Button } from 'core/actions';
+import { Button } from 'core/inputs';
 import Group from './Group';
 
 export default {
-  title: 'Core/Actions/Group',
+  title: 'Core/Inputs/Group',
   decorators: [],
   parameters: {
     component: Group,

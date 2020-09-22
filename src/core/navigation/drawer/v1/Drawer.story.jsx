@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 
-import { Group, Button, Fab } from 'core/actions';
-import Aside from './Aside';
+import { Group, Button, Fab } from 'core/inputs';
+import Drawer from './Drawer';
 
 export default {
-  title: 'Core/Menus/Aside',
+  title: 'Core/Navigation/Drawer',
   decorators: [],
   parameters: {
-    component: Aside,
-    componentSubtitle: 'Create a Aside menu',
+    component: Drawer,
+    componentSubtitle: 'Create a Drawer menu',
   },
 };
 
@@ -27,8 +27,8 @@ export const asideRightToLeft = () => {
   return (
     <>
       <Button onClick={() => setAsideOpen(true)}>Open Aside</Button>
-      <Aside isOpen={asideOpen} requestClose={() => setAsideOpen(false)}>
-        <Aside.Header>
+      <Drawer isOpen={asideOpen} requestClose={() => setAsideOpen(false)}>
+        <Drawer.Header>
           <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
             <Fab
               tooltip="Close"
@@ -38,13 +38,13 @@ export const asideRightToLeft = () => {
               onClick={() => setAsideOpen(false)}
             />
           </div>
-        </Aside.Header>
-        <Aside.Body>
+        </Drawer.Header>
+        <Drawer.Body>
           <div>
             <div style={{ height: '300vh' }}>hello</div>
           </div>
-        </Aside.Body>
-        <Aside.Footer>
+        </Drawer.Body>
+        <Drawer.Footer>
           <Group>
             <Button tooltip="Clear all filters" color="secondary" disable tiny>
               Effacer tout
@@ -53,8 +53,8 @@ export const asideRightToLeft = () => {
               Résultat (45)
             </Button>
           </Group>
-        </Aside.Footer>
-      </Aside>
+        </Drawer.Footer>
+      </Drawer>
     </>
   );
 };
@@ -64,8 +64,8 @@ export const asideLeftToRight = () => {
   return (
     <>
       <Button onClick={() => setAsideOpen(true)}>Open Aside</Button>
-      <Aside isOpen={asideOpen} requestClose={() => setAsideOpen(false)} openRightToLeft={false}>
-        <Aside.Header>
+      <Drawer isOpen={asideOpen} requestClose={() => setAsideOpen(false)} openRightToLeft={false}>
+        <Drawer.Header>
           <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
             <Fab
               tooltip="Close"
@@ -75,13 +75,13 @@ export const asideLeftToRight = () => {
               onClick={() => setAsideOpen(false)}
             />
           </div>
-        </Aside.Header>
-        <Aside.Body>
+        </Drawer.Header>
+        <Drawer.Body>
           <div>
             <div style={{ height: '300vh' }}>hello</div>
           </div>
-        </Aside.Body>
-        <Aside.Footer>
+        </Drawer.Body>
+        <Drawer.Footer>
           <Group>
             <Button tooltip="Clear all filters" color="secondary" disable tiny>
               Effacer tout
@@ -90,8 +90,8 @@ export const asideLeftToRight = () => {
               Résultat (45)
             </Button>
           </Group>
-        </Aside.Footer>
-      </Aside>
+        </Drawer.Footer>
+      </Drawer>
     </>
   );
 };

@@ -5,7 +5,7 @@ import { withKnobs, select, boolean } from '@storybook/addon-knobs';
 import Fab from './Fab';
 
 export default {
-  title: 'Core/Actions/Fab',
+  title: 'Core/Inputs/Fab',
   decorators: [withKnobs],
   parameters: {
     component: Fab,
