@@ -1,124 +1,143 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ExtraPropTypes from 'react-extra-prop-types';
 import styled, { css } from 'styled-components';
 
+import Spinner from 'core/miscellaneous';
 import { getTextColor, preventDoubleClick } from 'utils';
 
-const THEME_KEY = 'Button';
-
 const ButtonStyled = styled.button`
-  &:focus {
-    outline: none;
-  }
+  position: relative;
+  padding-top: ${({ theme, size }) => `${theme.Button.sizes[size].paddings[1]}`};
+  padding-bottom: ${({ theme, size }) => `${theme.Button.sizes[size].paddings[1]}`};
+  padding-left: ${({ theme, size }) => `${theme.Button.sizes[size].paddings[0]}`};
+  padding-right: ${({ theme, size }) => `${theme.Button.sizes[size].paddings[0]}`};
+  font-size: ${({ theme, size }) => theme.Button.sizes[size].fonts.size};
+  font-weight: ${({ theme, size }) => theme.Button.sizes[size].fonts.weight};
+  border: 1px solid transparent;
+  border-radius: ${({ theme, rounded }) => theme.Button.radius[rounded]};
+  width: ${({ fullWidth }) => (fullWidth ? '100%' : 'fit-content')};
+  transition: all 300ms cubic-bezier(0.55, 0.09, 0.68, 0.53);
 
-  ${({ outline, color, customColor, customOnColor, theme }) =>
-    outline
-      ? css`
-          border: ${customColor
-            ? `1px solid ${customColor.default}`
-            : `1px solid ${theme[THEME_KEY].color[color].default}`};
-          color: ${customOnColor ? getTextColor(customOnColor) : '#000000'};
+  ${({ isLoading }) => css`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:focus,
+    &:hover {
+      outline: none;
+      cursor: ${isLoading ? 'wait' : 'pointer'};
+    }
+  `};
+
+  ${({ theme, color, variant }) => {
+    switch (variant) {
+      case 'text':
+        return css`
+          color: ${getTextColor('#FFFFFF')};
 
           &:hover,
           &:focus {
-            border: ${customColor
-              ? `1px solid ${customColor.hover}`
-              : `1px solid ${theme[THEME_KEY].color[color].hover}`};
+            background-color: ${theme.Button.colors[color].text.hover};
+            color: ${getTextColor(theme.Button.colors[color].text.hover)};
           }
-        `
-      : css`
-          background-color: ${customColor
-            ? customColor.default
-            : theme[THEME_KEY].color[color].default};
-          color: ${customColor
-            ? getTextColor(customColor.default)
-            : getTextColor(theme[THEME_KEY].color[color].default)};
+        `;
+      case 'outlined':
+        return css`
+          border-color: ${theme.Button.colors[color].outlined.default};
+          color: ${getTextColor('#FFFFFF')};
 
           &:hover,
           &:focus {
-            background-color: ${customColor
-              ? customColor.hover
-              : theme[THEME_KEY].color[color].hover};
-            color: ${customColor
-              ? getTextColor(customColor.hover)
-              : getTextColor(theme[THEME_KEY].color[color].hover)};
+            border-color: ${theme.Button.colors[color].outlined.hover};
+            color: ${getTextColor('#FFFFFF')};
           }
-        `}
+        `;
+      default:
+        return css`
+          background-color: ${theme.Button.colors[color].contained.default};
+          color: ${getTextColor(theme.Button.colors[color].contained.default)};
 
-  ${({ rounded, theme }) => css`
-    border-radius: ${theme[THEME_KEY].radius[rounded].default};
+          &:hover,
+          &:focus {
+            background-color: ${theme.Button.colors[color].contained.hover};
+            color: ${getTextColor(theme.Button.colors[color].contained.hover)};
+          }
+        `;
+    }
+  }}
 
-    &:hover,
-    &:focus {
-      border-radius: ${theme[THEME_KEY].radius[rounded].hover};
+  ${({ theme, customBackground, customForeground }) => css`
+    &:disabled,
+    &:disabled {
+      background-color: ${customBackground || theme.Button.colors.disabled.bg};
+      color: ${customForeground || theme.Button.colors.disabled.text};
     }
   `}
-
-  ${({ tiny, theme }) =>
-    tiny
-      ? css`
-          padding: ${theme[THEME_KEY].padding.tiny.y} ${theme[THEME_KEY].padding.tiny.x};
-          font-size: ${theme[THEME_KEY].font.size.tiny};
-          font-weight: ${theme[THEME_KEY].font.weight.tiny};
-        `
-      : css`
-          padding: ${theme[THEME_KEY].padding.default.y} ${theme[THEME_KEY].padding.default.x};
-          font-size: ${theme[THEME_KEY].font.size.default};
-          font-weight: ${theme[THEME_KEY].font.weight.default};
-        `};
 `;
 
 const Button = ({
   children,
-  tooltip,
-  tabIndex,
   type,
-  loading,
-  disable,
-  preventDoubleClicking,
-  onClick,
-  keyCode,
-  tiny,
-  outline,
-  rounded,
+  title,
+  ariaLabel,
+  tabIndex,
   color,
-  customColor,
-  customOnColor,
+  variant,
+  rounded,
+  size,
+  fullWidth,
+  onClick,
+  pressKeyCode,
+  isPressable,
+  isDoubleClickable,
+  isLoading,
+  isDisabled,
 }) => {
-  const handleClick = () => {
-    if (!disable && !loading) onClick();
+  const trigglerEvent = () => {
+    if (!isDisabled && !isLoading) onClick();
   };
 
-  const handleKeyPress = (event) => {
-    if (event.keyCode === keyCode) handleClick();
-  };
-
-  const handleClickWithPrevent = preventDoubleClick((event) => {
+  const triggerEventWithPrevent = preventDoubleClick((event) => {
     event.preventDefault();
-    handleClick();
+    trigglerEvent();
   });
 
-  const handleKeyPressWithPrevent = (event) => {
-    if (event.keyCode === keyCode) handleClickWithPrevent(event);
+  const handleClick = (event) => {
+    if (isDoubleClickable) {
+      trigglerEvent();
+    } else {
+      triggerEventWithPrevent(event);
+    }
+  };
+
+  const handlePress = (event) => {
+    if (!isPressable || event.keyCode !== pressKeyCode) return;
+
+    if (isDoubleClickable) {
+      trigglerEvent();
+    } else {
+      triggerEventWithPrevent(event);
+    }
   };
 
   return (
     <ButtonStyled
-      tabIndex={tabIndex}
-      title={tooltip}
       type={type}
-      disabled={disable}
-      onClick={preventDoubleClicking ? handleClickWithPrevent : handleClick}
-      onKeyPress={preventDoubleClicking ? handleKeyPressWithPrevent : handleKeyPress}
-      tiny={tiny}
-      outline={outline}
-      rounded={rounded}
+      title={title}
+      ariaLabel={ariaLabel}
+      tabIndex={tabIndex}
       color={color}
-      customColor={customColor}
-      customOnColor={customOnColor}
+      variant={variant}
+      rounded={rounded}
+      size={size}
+      fullWidth={fullWidth}
+      onClick={(e) => handleClick(e)}
+      onKeyPress={(e) => handlePress(e)}
+      isLoading={isLoading}
+      disabled={isDisabled}
     >
       {children}
+      {isLoading && <Spinner color={color} variant={variant} />}
     </ButtonStyled>
   );
 };
@@ -129,80 +148,82 @@ Button.propTypes = {
   */
   children: PropTypes.node.isRequired,
   /**
-    (HTML Attribute) title of the button (use for screen reader and tooltip on hover)
-  */
-  tooltip: PropTypes.string.isRequired,
-  /**
-    (HTML Attribute) tab index of the button (use for drawer / 0 mean auto / -1 mean no focus)
-  */
-  tabIndex: PropTypes.string,
-  /**
-    (HTML Attribute) type of the button
+    (HTML Attribute) Button type
   */
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
   /**
-    Is the button loading?
+    (HTML Attribute) Button title
   */
-  loading: PropTypes.bool,
+  title: PropTypes.string.isRequired,
   /**
-    (HTML Attribute) Is the button disable?
+    (HTML Attribute) Button Aria Label
   */
-  disable: PropTypes.bool,
+  ariaLabel: PropTypes.string,
   /**
-    If false the user can click as fast as he can on the button
+    (HTML Attribute) Focus tab index, 0 = auto focus | -1 = unfocusable
   */
-  preventDoubleClicking: PropTypes.bool,
+  tabIndex: PropTypes.string,
   /**
-    Event trigger when the user click the button
+    One of the theme color key
+  */
+  color: PropTypes.oneOf(['primary', 'secondary', 'black', 'white']),
+  /**
+    One of the theme variant key
+  */
+  variant: PropTypes.oneOf(['text', 'contained', 'outlined']),
+  /**
+    Apply border radius
+  */
+  rounded: PropTypes.oneOf(['none', 'small', 'medium', 'large', 'full']),
+  /**
+    Button size based on theme settings
+  */
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  /**
+    Width 100% when on
+  */
+  fullWidth: PropTypes.bool,
+  /**
+    Event trigger when the user click
   */
   onClick: PropTypes.func,
   /**
-    Keycode used to trigger onKeyPressed (trigger the onClick method)
+    Key code to trigger event
   */
-  keyCode: PropTypes.number,
+  pressKeyCode: PropTypes.number,
   /**
-    Set the padding to tiny based on theme settings
+    Trigger event when key is pressed ?
   */
-  tiny: PropTypes.bool,
+  isPressable: PropTypes.bool,
   /**
-    Outline the button
+    When off, we prevent double click in a short lapse
   */
-  outline: PropTypes.bool,
+  isDoubleClickable: PropTypes.bool,
   /**
-    Apply rounded corners on top / left / bottom / right
+    Is the button loading ?
   */
-  rounded: PropTypes.oneOf(['none', 'sm', 'md', 'lg', 'xl', 'full']),
+  isLoading: PropTypes.bool,
   /**
-    Used the theme colors to style the button
+    Is the button disable ?
   */
-  color: PropTypes.oneOf(['primary', 'secondary', 'outline', 'default']),
-  /**
-    Used the custom default / hover color you provide (text color is automatic)
-  */
-  customColor: PropTypes.shape({
-    default: ExtraPropTypes.color,
-    hover: ExtraPropTypes.color,
-  }),
-  /**
-    Used this color as text color instead of auto
-  */
-  customOnColor: ExtraPropTypes.color,
+  isDisabled: PropTypes.bool,
 };
 
 Button.defaultProps = {
-  tabIndex: '0',
   type: 'button',
-  loading: false,
-  disable: false,
-  preventDoubleClicking: true,
-  onClick: () => {},
-  keyCode: 13,
-  tiny: false,
-  outline: false,
-  rounded: 'full',
+  ariaLabel: undefined,
+  tabIndex: '0',
   color: 'primary',
-  customColor: null,
-  customOnColor: null,
+  variant: 'contained',
+  rounded: 'full',
+  size: 'medium',
+  fullWidth: false,
+  onClick: () => {},
+  pressKeyCode: 13,
+  isPressable: true,
+  isDoubleClickable: false,
+  isLoading: false,
+  isDisabled: false,
 };
 
 export default Button;

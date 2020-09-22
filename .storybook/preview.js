@@ -35,7 +35,7 @@ addParameters({
 
 addDecorator((s) => (
   <ThemeProvider theme={defaultTheme}>
-    <ReactBreakpoints breakpoints={defaultTheme.global.breakpoints}>
+    <ReactBreakpoints breakpoints={defaultTheme.Global.breakpoints}>
       <GlobalStyle />
       {s()}
     </ReactBreakpoints>
