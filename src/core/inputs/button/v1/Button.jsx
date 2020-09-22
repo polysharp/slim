@@ -7,10 +7,6 @@ import { getTextColor, preventDoubleClick } from 'utils';
 
 const ButtonStyled = styled.button`
   position: relative;
-  padding-top: ${({ theme, size }) => `${theme.Button.sizes[size].paddings[1]}`};
-  padding-bottom: ${({ theme, size }) => `${theme.Button.sizes[size].paddings[1]}`};
-  padding-left: ${({ theme, size }) => `${theme.Button.sizes[size].paddings[0]}`};
-  padding-right: ${({ theme, size }) => `${theme.Button.sizes[size].paddings[0]}`};
   font-size: ${({ theme, size }) => theme.Button.sizes[size].fonts.size};
   font-weight: ${({ theme, size }) => theme.Button.sizes[size].fonts.weight};
   border: 1px solid transparent;
@@ -18,16 +14,17 @@ const ButtonStyled = styled.button`
   width: ${({ fullWidth }) => (fullWidth ? '100%' : 'fit-content')};
   transition: all 300ms cubic-bezier(0.55, 0.09, 0.68, 0.53);
 
-  ${({ isLoading }) => css`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    &:focus,
-    &:hover {
-      outline: none;
-      cursor: ${isLoading ? 'wait' : 'pointer'};
-    }
-  `};
+  ${({ theme, size, evenPadding }) =>
+    evenPadding
+      ? css`
+          padding: ${theme.Button.sizes[size].paddings[1]};
+        `
+      : css`
+          padding-top: ${theme.Button.sizes[size].paddings[1]}};
+          padding-bottom: ${theme.Button.sizes[size].paddings[1]};
+          padding-left: ${theme.Button.sizes[size].paddings[0]};
+          padding-right: ${theme.Button.sizes[size].paddings[0]};
+        `};
 
   ${({ theme, color, variant }) => {
     switch (variant) {
@@ -73,6 +70,17 @@ const ButtonStyled = styled.button`
       color: ${customForeground || theme.Button.colors.disabled.text};
     }
   `}
+
+  ${({ isLoading }) => css`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:focus,
+    &:hover {
+      outline: none;
+      cursor: ${isLoading ? 'wait' : 'pointer'};
+    }
+  `};
 `;
 
 const Button = ({
@@ -86,6 +94,7 @@ const Button = ({
   rounded,
   size,
   fullWidth,
+  evenPadding,
   onClick,
   pressKeyCode,
   isPressable,
@@ -131,6 +140,7 @@ const Button = ({
       rounded={rounded}
       size={size}
       fullWidth={fullWidth}
+      evenPadding={evenPadding}
       onClick={(e) => handleClick(e)}
       onKeyPress={(e) => handlePress(e)}
       isLoading={isLoading}
@@ -184,6 +194,10 @@ Button.propTypes = {
   */
   fullWidth: PropTypes.bool,
   /**
+    Used for even padding around icon
+   */
+  evenPadding: PropTypes.bool,
+  /**
     Event trigger when the user click
   */
   onClick: PropTypes.func,
@@ -218,6 +232,7 @@ Button.defaultProps = {
   rounded: 'full',
   size: 'medium',
   fullWidth: false,
+  evenPadding: false,
   onClick: () => {},
   pressKeyCode: 13,
   isPressable: true,
