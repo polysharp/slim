@@ -269,6 +269,12 @@ const GlobalStyle = createGlobalStyle`
     max-width: 100%;
     height: auto;
   }
+  button:focus:disabled,
+  button:hover:disabled,
+  a:focus:disabled,
+  a:hover:disabled {
+    cursor: not-allowed;
+  }
 `;
 
 export default GlobalStyle;
