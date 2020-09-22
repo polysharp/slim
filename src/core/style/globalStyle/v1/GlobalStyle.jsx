@@ -14,7 +14,8 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     margin: 0;
-    overscroll-behavior-y: none;
+    padding: 0;
+    overflow-x: hidden;
   }
   main {
     display: block;

@@ -22,20 +22,21 @@ const CloseIcon = () => (
   </svg>
 );
 
-export const asideRightToLeft = () => {
-  const [asideOpen, setAsideOpen] = useState(false);
+export const anchorRight = () => {
+  const [drawerOpen, setDrawerOpen] = useState(false);
   return (
     <>
-      <Button onClick={() => setAsideOpen(true)}>Open Aside</Button>
-      <Drawer isOpen={asideOpen} requestClose={() => setAsideOpen(false)}>
+      <Button onClick={() => setDrawerOpen(true)}>Open Drawer</Button>
+      <Drawer isOpen={drawerOpen} requestClose={() => setDrawerOpen(false)}>
         <Drawer.Header>
           <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
             <Fab
               tooltip="Close"
+              tabIndex={drawerOpen ? '0' : '-1'}
               color="default"
               tiny
               icon={<CloseIcon />}
-              onClick={() => setAsideOpen(false)}
+              onClick={() => setDrawerOpen(false)}
             />
           </div>
         </Drawer.Header>
@@ -46,10 +47,20 @@ export const asideRightToLeft = () => {
         </Drawer.Body>
         <Drawer.Footer>
           <Group>
-            <Button tooltip="Clear all filters" color="secondary" disable tiny>
+            <Button
+              tooltip="Clear all filters"
+              tabIndex={drawerOpen ? '0' : '-1'}
+              color="secondary"
+              tiny
+            >
               Effacer tout
             </Button>
-            <Button tooltip="Show 45 results" color="default" tiny>
+            <Button
+              tooltip="Show 45 results"
+              tabIndex={drawerOpen ? '0' : '-1'}
+              color="default"
+              tiny
+            >
               Résultat (45)
             </Button>
           </Group>
@@ -59,20 +70,21 @@ export const asideRightToLeft = () => {
   );
 };
 
-export const asideLeftToRight = () => {
-  const [asideOpen, setAsideOpen] = useState(false);
+export const anchorLeft = () => {
+  const [drawerOpen, setDrawerOpen] = useState(false);
   return (
     <>
-      <Button onClick={() => setAsideOpen(true)}>Open Aside</Button>
-      <Drawer isOpen={asideOpen} requestClose={() => setAsideOpen(false)} openRightToLeft={false}>
+      <Button onClick={() => setDrawerOpen(true)}>Open Aside</Button>
+      <Drawer isOpen={drawerOpen} requestClose={() => setDrawerOpen(false)} anchor="left">
         <Drawer.Header>
           <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
             <Fab
               tooltip="Close"
+              tabIndex={drawerOpen ? '0' : '-1'}
               color="default"
               tiny
               icon={<CloseIcon />}
-              onClick={() => setAsideOpen(false)}
+              onClick={() => setDrawerOpen(false)}
             />
           </div>
         </Drawer.Header>
@@ -83,10 +95,20 @@ export const asideLeftToRight = () => {
         </Drawer.Body>
         <Drawer.Footer>
           <Group>
-            <Button tooltip="Clear all filters" color="secondary" disable tiny>
+            <Button
+              tooltip="Clear all filters"
+              tabIndex={drawerOpen ? '0' : '-1'}
+              color="secondary"
+              tiny
+            >
               Effacer tout
             </Button>
-            <Button tooltip="Show 45 results" color="default" tiny>
+            <Button
+              tooltip="Show 45 results"
+              tabIndex={drawerOpen ? '0' : '-1'}
+              color="default"
+              tiny
+            >
               Résultat (45)
             </Button>
           </Group>

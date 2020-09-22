@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import FocusLock from 'react-focus-lock';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
@@ -9,26 +10,14 @@ const overlay = {
 };
 
 const wrapper = {
-  close: (right = true) =>
-    right
-      ? {
-          opacity: 0,
-          right: '-100%',
-        }
-      : {
-          opacity: 0,
-          left: '-100%',
-        },
-  open: (right = true) =>
-    right
-      ? {
-          opacity: 1,
-          right: 0,
-        }
-      : {
-          opacity: 1,
-          left: 0,
-        },
+  close: (anchor = 'right') => ({
+    opacity: 0,
+    [anchor]: '-100%',
+  }),
+  open: (anchor = 'right') => ({
+    opacity: 1,
+    [anchor]: 0,
+  }),
 };
 
 const DrawerOverlay = styled(motion.div)`
@@ -71,30 +60,40 @@ const DrawerFooter = styled.div`
   background-color: #ffffff;
 `;
 
-const Drawer = ({ children, isOpen, requestClose, closeOnOutsideClick, openRightToLeft }) => {
+const Drawer = ({
+  children,
+  anchor,
+  isOpen,
+  requestClose,
+  closeOnOutsideClick,
+  trapFocusOnOpen,
+}) => {
   const onOutsideClick = () => {
     if (closeOnOutsideClick) requestClose();
   };
 
   return (
-    <div>
-      <DrawerOverlay
-        isOpen={isOpen}
-        onClick={onOutsideClick}
-        initial="close"
-        animate={isOpen ? 'open' : 'close'}
-        variants={overlay}
-      />
-      <DrawerWrapper
-        inital="close"
-        animate={isOpen ? 'open' : 'close'}
-        variants={wrapper}
-        transition={{ duration: 0.3, ease: 'linear' }}
-        custom={openRightToLeft}
-      >
-        {children}
-      </DrawerWrapper>
-    </div>
+    <FocusLock autoFocus={false} disabled={!(trapFocusOnOpen && isOpen)}>
+      <div>
+        <DrawerOverlay
+          isOpen={isOpen}
+          onClick={onOutsideClick}
+          initial="close"
+          animate={isOpen ? 'open' : 'close'}
+          variants={overlay}
+        />
+        <DrawerWrapper
+          inital="close"
+          animate={isOpen ? 'open' : 'close'}
+          variants={wrapper}
+          transition={{ duration: 0.3, ease: 'linear' }}
+          custom={anchor}
+          anchor={anchor}
+        >
+          {children}
+        </DrawerWrapper>
+      </div>
+    </FocusLock>
   );
 };
 
@@ -108,6 +107,10 @@ Drawer.propTypes = {
   */
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
   /**
+    Slide in from right to left (Must be static !)
+  */
+  anchor: PropTypes.oneOf(['left', 'right']),
+  /**
     Display the Aside
   */
   isOpen: PropTypes.bool.isRequired,
@@ -120,14 +123,15 @@ Drawer.propTypes = {
   */
   closeOnOutsideClick: PropTypes.bool,
   /**
-    Slide in from right to left (Must be static !)
-  */
-  openRightToLeft: PropTypes.bool,
+    Trap focus when the modal is open
+   */
+  trapFocusOnOpen: PropTypes.bool,
 };
 
 Drawer.defaultProps = {
+  anchor: 'right',
   closeOnOutsideClick: true,
-  openRightToLeft: true,
+  trapFocusOnOpen: true,
 };
 
 export default Drawer;

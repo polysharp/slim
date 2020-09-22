@@ -72,6 +72,7 @@ const ButtonStyled = styled.button`
 const Button = ({
   children,
   tooltip,
+  tabIndex,
   type,
   loading,
   disable,
@@ -104,6 +105,7 @@ const Button = ({
 
   return (
     <ButtonStyled
+      tabIndex={tabIndex}
       title={tooltip}
       type={type}
       disabled={disable}
@@ -130,6 +132,10 @@ Button.propTypes = {
     (HTML Attribute) title of the button (use for screen reader and tooltip on hover)
   */
   tooltip: PropTypes.string.isRequired,
+  /**
+    (HTML Attribute) tab index of the button (use for drawer / 0 mean auto / -1 mean no focus)
+  */
+  tabIndex: PropTypes.string,
   /**
     (HTML Attribute) type of the button
   */
@@ -184,6 +190,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
+  tabIndex: '0',
   type: 'button',
   loading: false,
   disable: false,

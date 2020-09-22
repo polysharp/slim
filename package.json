@@ -35,7 +35,8 @@
     "styled-components": "^5.2.0",
     "react-breakpoints": "^3.0.3",
     "react-extra-prop-types": "^0.3.1",
-    "framer-motion": "^2.6.15"
+    "framer-motion": "^2.6.15",
+    "react-focus-lock": "^2.4.1"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^11.0.0",
@@ -72,6 +73,7 @@
     "react-breakpoints": "^3.0.3",
     "react-dom": "^16.13.1",
     "react-extra-prop-types": "^0.3.1",
+    "react-focus-lock": "^2.4.1",
     "react-scripts": "^3.4.3",
     "semantic-release": "^17.1.2",
     "styled-components": "^5.2.0"

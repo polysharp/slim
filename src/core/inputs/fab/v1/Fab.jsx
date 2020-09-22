@@ -71,6 +71,7 @@ const FabStyled = styled.button`
 
 const Fab = ({
   tooltip,
+  tabIndex,
   type,
   icon,
   loading,
@@ -104,6 +105,7 @@ const Fab = ({
 
   return (
     <FabStyled
+      tabIndex={tabIndex}
       title={tooltip}
       type={type}
       disabled={disable}
@@ -123,17 +125,21 @@ const Fab = ({
 
 Fab.propTypes = {
   /**
-    Content place in the fab
-  */
-  icon: PropTypes.node.isRequired,
-  /**
     (HTML Attribute) title of the button (use for screen reader and tooltip on hover)
   */
   tooltip: PropTypes.string.isRequired,
   /**
+    (HTML Attribute) tab index of the button (use for drawer / 0 mean auto / -1 mean no focus)
+  */
+  tabIndex: PropTypes.string,
+  /**
     (HTML Attribute) type of the fab
   */
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
+  /**
+    Content place in the fab
+  */
+  icon: PropTypes.node.isRequired,
   /**
     Is the fab loading?
   */
@@ -184,6 +190,7 @@ Fab.propTypes = {
 };
 
 Fab.defaultProps = {
+  tabIndex: '0',
   type: 'button',
   loading: false,
   disable: false,
