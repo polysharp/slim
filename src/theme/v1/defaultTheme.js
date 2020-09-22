@@ -56,25 +56,6 @@ const defaultTheme = {
       full: radius.full,
     },
   },
-  Fab: {
-    color: {
-      primary: { default: '#0058a3', hover: '#004f93' },
-      outline: { default: '#dfdfdf', hover: '#929292' },
-      default: { default: '#FFFFFF', hover: '#f5f5f5' },
-    },
-    radius: {
-      none: { default: '0', hover: '0' },
-      sm: { default: '0.125rem', hover: '0.125rem' },
-      md: { default: '0.25rem', hover: '0.25rem' },
-      lg: { default: '0.375rem', hover: '0.375rem' },
-      xl: { default: '0.5rem', hover: '0.5rem' },
-      full: { default: '9999px', hover: '9999px' },
-    },
-    padding: {
-      default: '0.9375rem',
-      tiny: '.5rem',
-    },
-  },
   Tag: {
     color: {
       info: '#0077c1',

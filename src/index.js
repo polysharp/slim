@@ -1,7 +1,7 @@
 /* ============ COMPONENTS ============ */
 export { Tag, Price } from './core/contents';
 
-export { Group, Button, Fab } from './core/inputs';
+export { Group, Button } from './core/inputs';
 
 export { Grid, Tile, Hidden } from './core/layout';
 
