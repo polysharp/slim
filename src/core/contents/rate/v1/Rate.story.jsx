@@ -123,8 +123,8 @@ export const insideButton = () => (
       )}
       size={select(
         options.size.label,
-        options.size.defaultValue,
         options.size.options,
+        options.size.defaultValue,
         options.size.groupId
       )}
     />
