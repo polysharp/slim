@@ -105,15 +105,23 @@ const defaultTheme = {
     },
   },
   Tag: {
-    color: {
-      info: '#0077c1',
-      warning: '#ca5008',
-      danger: '#ed022a',
+    colors: {
+      info: colors.info,
+      warning: colors.warning,
+      danger: colors.danger,
     },
-    font: {
-      size: {
-        default: '0.875rem',
-        tiny: '0.75rem',
+    sizes: {
+      small: {
+        size: typography.sizes.xs,
+        weight: typography.weights.bold,
+      },
+      medium: {
+        size: typography.sizes.sm,
+        weight: typography.weights.bold,
+      },
+      large: {
+        size: typography.sizes.md,
+        weight: typography.weights.bold,
       },
     },
   },

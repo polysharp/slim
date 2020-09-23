@@ -3,32 +3,18 @@ import PropTypes from 'prop-types';
 import ExtraPropTypes from 'react-extra-prop-types';
 import styled, { css } from 'styled-components';
 
-const THEME_KEY = 'Tag';
-
 const TagStyled = styled.span`
-  font-weight: 700;
-
-  ${({ color, customColor, theme }) =>
-    customColor
-      ? css`
-          color: ${customColor};
-        `
-      : css`
-          color: ${theme[THEME_KEY].color[color]};
-        `}
-
-  ${({ tiny, theme }) =>
-    tiny
-      ? css`
-          font-size: ${theme[THEME_KEY].font.size.tiny};
-        `
-      : css`
-          font-size: ${theme[THEME_KEY].font.size.default};
-        `};
+  ${({ theme, color, customColor, size }) => {
+    return css`
+      color: ${customColor || theme.Tag.colors[color]};
+      font-size: ${theme.Tag.sizes[size].size};
+      font-weight: ${theme.Tag.sizes[size].weight};
+    `;
+  }}
 `;
 
-const Tag = ({ children, color, tiny, customColor }) => (
-  <TagStyled tiny={tiny} color={color} customColor={customColor}>
+const Tag = ({ children, color, customColor, size }) => (
+  <TagStyled color={color} customColor={customColor} size={size}>
     {children}
   </TagStyled>
 );
@@ -39,23 +25,23 @@ Tag.propTypes = {
   */
   children: PropTypes.node.isRequired,
   /**
-    Used for the font-size
-  */
-  tiny: PropTypes.bool,
-  /**
-    Used theme colors
+    One of the tag theme color key
   */
   color: PropTypes.oneOf(['info', 'warning', 'danger']),
   /**
     Used this color instead of theme color
   */
   customColor: ExtraPropTypes.color,
+  /**
+    Button size based on theme settings
+  */
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
 Tag.defaultProps = {
-  tiny: false,
   color: 'info',
   customColor: null,
+  size: 'medium',
 };
 
 export default Tag;

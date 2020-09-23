@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import { withKnobs, select, boolean, text } from '@storybook/addon-knobs';
+import { withKnobs, select, color, text } from '@storybook/addon-knobs';
 
 import Tag from './Tag';
 
@@ -14,11 +14,6 @@ export default {
 };
 
 const options = {
-  tiny: {
-    label: 'Tiny',
-    defaultValue: false,
-    groupId: 'Style',
-  },
   color: {
     label: 'Color',
     options: {
@@ -27,6 +22,21 @@ const options = {
       Danger: 'danger',
     },
     defaultValue: 'info',
+    groupId: 'Style',
+  },
+  customColor: {
+    label: 'Custom Color',
+    defaultValue: '#928ccd',
+    groupId: 'Custom',
+  },
+  size: {
+    label: 'Size',
+    options: {
+      Small: 'small',
+      Medium: 'medium',
+      Large: 'large',
+    },
+    defaultValue: 'medium',
     groupId: 'Style',
   },
   label: {
@@ -38,12 +48,17 @@ const options = {
 
 export const withText = () => (
   <Tag
-    tiny={boolean(options.tiny.label, options.tiny.defaultValue, options.tiny.groupId)}
     color={select(
       options.color.label,
       options.color.options,
       options.color.defaultValue,
       options.color.groupId
+    )}
+    size={select(
+      options.size.label,
+      options.size.options,
+      options.size.defaultValue,
+      options.size.groupId
     )}
   >
     {text(options.label.label, options.label.defaultValue, options.label.groupId)}
@@ -52,8 +67,17 @@ export const withText = () => (
 
 export const customColor = () => (
   <Tag
-    tiny={boolean(options.tiny.label, options.tiny.defaultValue, options.tiny.groupId)}
-    customColor="#000"
+    customColor={color(
+      options.customColor.label,
+      options.customColor.defaultValue,
+      options.customColor.groupId
+    )}
+    size={select(
+      options.size.label,
+      options.size.options,
+      options.size.defaultValue,
+      options.size.groupId
+    )}
   >
     {text(options.label.label, options.label.defaultValue, options.label.groupId)}
   </Tag>

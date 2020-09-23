@@ -9,6 +9,9 @@ const colors = {
   'light-white': '#f5f5f5',
   black: '#000000',
   'light-black': '#333333',
+  info: '#0077c1',
+  warning: '#ca5008',
+  danger: '#ed022a',
 };
 
 export default colors;
