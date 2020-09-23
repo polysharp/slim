@@ -1,5 +1,5 @@
 /* ============ COMPONENTS ============ */
-export { Tag, Price } from './core/contents';
+export { Price, Rate, Tag } from './core/contents';
 
 export { Button, IconButton } from './core/inputs';
 
