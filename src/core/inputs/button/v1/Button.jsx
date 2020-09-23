@@ -40,6 +40,9 @@ const ButtonStyled = styled.button`
           &:focus {
             background-color: ${theme.Button.colors[color].text.hover};
             color: ${getTextColor(theme.Button.colors[color].text.hover)};
+          }
+
+          &:focus {
             box-shadow: ${theme.Button.colors[color].text.outline};
           }
         `;
@@ -51,7 +54,10 @@ const ButtonStyled = styled.button`
           &:hover,
           &:focus {
             border-color: ${theme.Button.colors[color].outlined.hover};
-            box-shadow: ${theme.Button.colors[color].outlined.outline};
+          }
+
+          &:focus {
+            box-shadow: ${theme.Button.colors[color].text.outline};
           }
         `;
       default:
@@ -63,7 +69,10 @@ const ButtonStyled = styled.button`
           &:focus {
             background-color: ${theme.Button.colors[color].contained.hover};
             color: ${getTextColor(theme.Button.colors[color].contained.hover)};
-            box-shadow: ${theme.Button.colors[color].contained.outline};
+          }
+
+          &:focus {
+            box-shadow: ${theme.Button.colors[color].text.outline};
           }
         `;
     }
