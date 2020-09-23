@@ -110,7 +110,12 @@ export const insideButton = () => (
     variant="outlined"
   >
     <Rate
-      score={number(options.score.label, options.score.defaultValue, options.score.groupId)}
+      score={number(
+        options.score.label,
+        options.score.defaultValue,
+        options.score.options,
+        options.score.groupId
+      )}
       comments={number(
         options.comments.label,
         options.comments.defaultValue,
@@ -118,8 +123,8 @@ export const insideButton = () => (
       )}
       size={select(
         options.size.label,
-        options.size.options,
         options.size.defaultValue,
+        options.size.options,
         options.size.groupId
       )}
     />
@@ -128,7 +133,12 @@ export const insideButton = () => (
 
 export const customIcon = () => (
   <Rate
-    score={number(options.score.label, options.score.defaultValue, options.score.groupId)}
+    score={number(
+      options.score.label,
+      options.score.defaultValue,
+      options.size.options,
+      options.score.groupId
+    )}
     comments={number(
       options.comments.label,
       options.comments.defaultValue,
