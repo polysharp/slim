@@ -5,7 +5,7 @@ import { withKnobs, select, boolean } from '@storybook/addon-knobs';
 import IconButton from './IconButton';
 
 export default {
-  title: 'Core/Inputs/Buttons',
+  title: 'Core/Inputs/IconButton',
   decorators: [withKnobs],
   parameters: {
     component: IconButton,
