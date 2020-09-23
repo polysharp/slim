@@ -12,4 +12,4 @@ export default {
   },
 };
 
-export const spinner = () => <Spinner />;
+export const spinner = () => <Spinner color="white" />;
