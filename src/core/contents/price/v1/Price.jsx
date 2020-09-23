@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const PriceWrapper = styled.span`
   display: flex;
@@ -10,21 +10,40 @@ const PriceWrapper = styled.span`
 `;
 
 const IntegersStyled = styled.span`
-  font-size: 1.5rem;
-  font-weight: 600;
   line-height: 1.5rem;
+
+  ${({ theme, size }) => {
+    return css`
+      font-size: ${theme.Price.sizes[size].integers.size};
+      font-weight: ${theme.Price.sizes[size].integers.weight};
+    `;
+  }}
 `;
 
 const DecimalsStyled = styled.span`
-  font-size: 0.75rem;
-  font-weight: 600;
+  line-height: normal;
+
+  ${({ theme, size }) => {
+    return css`
+      font-size: ${theme.Price.sizes[size].decimals.size};
+      font-weight: ${theme.Price.sizes[size].decimals.weight};
+    `;
+  }}
 `;
 
 const SymbolStyled = styled.span`
+  line-height: normal;
   padding-left: 0.25rem;
+
+  ${({ theme, size }) => {
+    return css`
+      font-size: ${theme.Price.sizes[size].symbol.size};
+      font-weight: ${theme.Price.sizes[size].symbol.weight};
+    `;
+  }}
 `;
 
-const Price = ({ value }) => {
+const Price = ({ value, size }) => {
   const [formatedPrice, setFormatedPrice] = useState({ integer: value, decimal: null });
 
   useEffect(() => {
@@ -39,17 +58,22 @@ const Price = ({ value }) => {
 
   return (
     <PriceWrapper>
-      <IntegersStyled>{formatedPrice.integer}</IntegersStyled>
-      <DecimalsStyled>
+      <IntegersStyled size={size}>{formatedPrice.integer}</IntegersStyled>
+      <DecimalsStyled size={size}>
         {formatedPrice.decimal && `,${formatedPrice.decimal}`}
-        <SymbolStyled>€</SymbolStyled>
       </DecimalsStyled>
+      <SymbolStyled size={size}>€</SymbolStyled>
     </PriceWrapper>
   );
 };
 
 Price.propTypes = {
   value: PropTypes.number.isRequired,
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
+};
+
+Price.defaultProps = {
+  size: 'medium',
 };
 
 export default Price;
