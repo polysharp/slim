@@ -4,24 +4,72 @@ const defaultTheme = {
   Button: {
     colors: {
       primary: {
-        text: { default: colors['light-primary'], hover: colors['dark-primary'] },
-        outlined: { default: colors['light-primary'], hover: colors['dark-primary'] },
-        contained: { default: colors['light-primary'], hover: colors['dark-primary'] },
+        text: {
+          default: colors['light-primary'],
+          hover: colors['dark-primary'],
+          outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
+        },
+        outlined: {
+          default: colors['light-primary'],
+          hover: colors['dark-primary'],
+          outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
+        },
+        contained: {
+          default: colors['light-primary'],
+          hover: colors['dark-primary'],
+          outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
+        },
       },
       secondary: {
-        text: { default: colors['light-secondary'], hover: colors['dark-secondary'] },
-        outlined: { default: colors['light-secondary'], hover: colors['dark-secondary'] },
-        contained: { default: colors['light-secondary'], hover: colors['dark-secondary'] },
+        text: {
+          default: colors['light-secondary'],
+          hover: colors['dark-secondary'],
+          outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
+        },
+        outlined: {
+          default: colors['light-secondary'],
+          hover: colors['dark-secondary'],
+          outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
+        },
+        contained: {
+          default: colors['light-secondary'],
+          hover: colors['dark-secondary'],
+          outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
+        },
       },
       black: {
-        text: { default: colors.black, hover: colors['light-black'] },
-        outlined: { default: colors.black, hover: colors['light-black'] },
-        contained: { default: colors.black, hover: colors['light-black'] },
+        text: {
+          default: colors.black,
+          hover: colors['light-black'],
+          outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
+        },
+        outlined: {
+          default: colors.black,
+          hover: colors['light-black'],
+          outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
+        },
+        contained: {
+          default: colors.black,
+          hover: colors['light-black'],
+          outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
+        },
       },
       white: {
-        text: { default: colors.white, hover: colors['light-white'] },
-        outlined: { default: colors.white, hover: colors['light-white'] },
-        contained: { default: colors.white, hover: colors['light-white'] },
+        text: {
+          default: colors.white,
+          hover: colors['light-white'],
+          outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
+        },
+        outlined: {
+          default: colors.white,
+          hover: colors['light-white'],
+          outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
+        },
+        contained: {
+          default: colors.white,
+          hover: colors['light-white'],
+          outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
+        },
       },
       disabled: { bg: colors['light-gray'], text: colors['dark-gray'] },
     },

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
-import { Group, Button, Fab } from 'core/inputs';
+import { Button, IconButton } from 'core/inputs';
+import { Group } from 'core/layout';
+
 import Drawer from './Drawer';
 
 export default {
@@ -13,7 +15,7 @@ export default {
 };
 
 const CloseIcon = () => (
-  <svg viewBox="0 0 24 24" width="24" height="24" fill="#111">
+  <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -26,17 +28,18 @@ export const anchorRight = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   return (
     <>
-      <Button onClick={() => setDrawerOpen(true)}>Open Drawer</Button>
+      <Button title="Open menu" onClick={() => setDrawerOpen(true)}>
+        Open Drawer
+      </Button>
       <Drawer isOpen={drawerOpen} requestClose={() => setDrawerOpen(false)}>
         <Drawer.Header>
           <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <Fab
-              tooltip="Close"
-              tabIndex={drawerOpen ? '0' : '-1'}
-              color="default"
-              tiny
+            <IconButton
               icon={<CloseIcon />}
+              title="Close"
+              tabIndex={drawerOpen ? '0' : '-1'}
               onClick={() => setDrawerOpen(false)}
+              color="white"
             />
           </div>
         </Drawer.Header>
@@ -46,21 +49,16 @@ export const anchorRight = () => {
           </div>
         </Drawer.Body>
         <Drawer.Footer>
-          <Group>
+          <Group gap={2}>
             <Button
-              tooltip="Clear all filters"
+              title="Clear all filters"
               tabIndex={drawerOpen ? '0' : '-1'}
               color="secondary"
-              tiny
+              isDisabled
             >
               Effacer tout
             </Button>
-            <Button
-              tooltip="Show 45 results"
-              tabIndex={drawerOpen ? '0' : '-1'}
-              color="default"
-              tiny
-            >
+            <Button title="Show 45 results" tabIndex={drawerOpen ? '0' : '-1'} color="black">
               Résultat (45)
             </Button>
           </Group>
@@ -74,17 +72,18 @@ export const anchorLeft = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   return (
     <>
-      <Button onClick={() => setDrawerOpen(true)}>Open Aside</Button>
+      <Button title="Open menu" onClick={() => setDrawerOpen(true)}>
+        Open Drawer
+      </Button>
       <Drawer isOpen={drawerOpen} requestClose={() => setDrawerOpen(false)} anchor="left">
         <Drawer.Header>
-          <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-            <Fab
-              tooltip="Close"
-              tabIndex={drawerOpen ? '0' : '-1'}
-              color="default"
-              tiny
+          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <IconButton
               icon={<CloseIcon />}
+              title="Close"
+              tabIndex={drawerOpen ? '0' : '-1'}
               onClick={() => setDrawerOpen(false)}
+              color="white"
             />
           </div>
         </Drawer.Header>
@@ -94,21 +93,16 @@ export const anchorLeft = () => {
           </div>
         </Drawer.Body>
         <Drawer.Footer>
-          <Group>
+          <Group gap={2}>
             <Button
-              tooltip="Clear all filters"
+              title="Clear all filters"
               tabIndex={drawerOpen ? '0' : '-1'}
               color="secondary"
-              tiny
+              isDisabled
             >
               Effacer tout
             </Button>
-            <Button
-              tooltip="Show 45 results"
-              tabIndex={drawerOpen ? '0' : '-1'}
-              color="default"
-              tiny
-            >
+            <Button title="Show 45 results" tabIndex={drawerOpen ? '0' : '-1'} color="black">
               Résultat (45)
             </Button>
           </Group>

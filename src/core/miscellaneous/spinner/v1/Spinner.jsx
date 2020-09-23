@@ -6,7 +6,6 @@ import { getTextColor } from 'utils';
 
 const StyledSpinner = styled.span`
   position: absolute;
-  border-radius: 99999px;
   top: 0;
   left: 0;
   right: 0;
@@ -15,26 +14,18 @@ const StyledSpinner = styled.span`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 99999px;
 
   ${({ theme, color, variant }) => {
     switch (variant) {
-      case 'text':
-        return css`
-          color: ${getTextColor('#FFFFFF')};
-
-          &:hover,
-          &:focus {
-            background-color: ${theme.Button.colors[color].text.hover};
-            color: ${getTextColor(theme.Button.colors[color].text.hover)};
-          }
-        `;
       case 'outlined':
         return css`
           background-color: #ffffff;
         `;
       default:
         return css`
-          background-color: ${theme.Button.colors[color].contained.default};
+          background-color: ${theme.Button.colors[color][variant].default};
+          color: ${getTextColor(theme.Button.colors[color][variant].default)};
         `;
     }
   }}

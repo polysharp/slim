@@ -1,2 +1,2 @@
-export { default as Group } from './group';
 export { default as Button } from './button';
+export { default as IconButton } from './icon-button';

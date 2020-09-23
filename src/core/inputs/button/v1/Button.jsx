@@ -7,6 +7,9 @@ import { getTextColor, preventDoubleClick } from 'utils';
 
 const ButtonStyled = styled.button`
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: ${({ theme, size }) => theme.Button.sizes[size].fonts.size};
   font-weight: ${({ theme, size }) => theme.Button.sizes[size].fonts.weight};
   border: 1px solid transparent;
@@ -14,8 +17,8 @@ const ButtonStyled = styled.button`
   width: ${({ fullWidth }) => (fullWidth ? '100%' : 'fit-content')};
   transition: all 300ms cubic-bezier(0.55, 0.09, 0.68, 0.53);
 
-  ${({ theme, size, evenPadding }) =>
-    evenPadding
+  ${({ theme, size, evenPadding }) => {
+    return evenPadding
       ? css`
           padding: ${theme.Button.sizes[size].paddings[1]};
         `
@@ -24,7 +27,8 @@ const ButtonStyled = styled.button`
           padding-bottom: ${theme.Button.sizes[size].paddings[1]};
           padding-left: ${theme.Button.sizes[size].paddings[0]};
           padding-right: ${theme.Button.sizes[size].paddings[0]};
-        `};
+        `;
+  }};
 
   ${({ theme, color, variant }) => {
     switch (variant) {
@@ -36,6 +40,7 @@ const ButtonStyled = styled.button`
           &:focus {
             background-color: ${theme.Button.colors[color].text.hover};
             color: ${getTextColor(theme.Button.colors[color].text.hover)};
+            box-shadow: ${theme.Button.colors[color].text.outline};
           }
         `;
       case 'outlined':
@@ -46,7 +51,7 @@ const ButtonStyled = styled.button`
           &:hover,
           &:focus {
             border-color: ${theme.Button.colors[color].outlined.hover};
-            color: ${getTextColor('#FFFFFF')};
+            box-shadow: ${theme.Button.colors[color].outlined.outline};
           }
         `;
       default:
@@ -58,29 +63,22 @@ const ButtonStyled = styled.button`
           &:focus {
             background-color: ${theme.Button.colors[color].contained.hover};
             color: ${getTextColor(theme.Button.colors[color].contained.hover)};
+            box-shadow: ${theme.Button.colors[color].contained.outline};
           }
         `;
     }
   }}
 
-  ${({ theme, customBackground, customForeground }) => css`
+  ${({ theme, isLoading }) => css`
+    pointer-events: ${isLoading ? 'none' : 'initial'};
+
     &:disabled,
     &:disabled {
-      background-color: ${customBackground || theme.Button.colors.disabled.bg};
-      color: ${customForeground || theme.Button.colors.disabled.text};
+      border-color: transparent;
+      background-color: ${theme.Button.colors.disabled.bg};
+      color: ${theme.Button.colors.disabled.text};
     }
   `}
-
-  ${({ isLoading }) => css`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    &:focus,
-    &:hover {
-      outline: none;
-      cursor: ${isLoading ? 'wait' : 'pointer'};
-    }
-  `};
 `;
 
 const Button = ({

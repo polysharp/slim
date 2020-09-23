@@ -1,9 +1,9 @@
 /* ============ COMPONENTS ============ */
 export { Tag, Price } from './core/contents';
 
-export { Group, Button } from './core/inputs';
+export { Button, IconButton } from './core/inputs';
 
-export { Grid, Tile, Hidden } from './core/layout';
+export { Grid, Tile, Hidden, Group } from './core/layout';
 
 export { default as Spinner } from './core/miscellaneous';
 
