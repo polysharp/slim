@@ -125,6 +125,25 @@ const defaultTheme = {
       },
     },
   },
+  Price: {
+    sizes: {
+      small: {
+        integers: { size: typography.sizes.xl, weight: typography.weights.semibold },
+        decimals: { size: typography.sizes.xs, weight: typography.weights.semibold },
+        symbol: { size: typography.sizes.xs, weight: typography.weights.semibold },
+      },
+      medium: {
+        integers: { size: typography.sizes['2xl'], weight: typography.weights.semibold },
+        decimals: { size: typography.sizes.sm, weight: typography.weights.semibold },
+        symbol: { size: typography.sizes.sm, weight: typography.weights.semibold },
+      },
+      large: {
+        integers: { size: typography.sizes['3xl'], weight: typography.weights.semibold },
+        decimals: { size: typography.sizes.md, weight: typography.weights.semibold },
+        symbol: { size: typography.sizes.md, weight: typography.weights.semibold },
+      },
+    },
+  },
   Global: {
     breakpoints: { ...breakpoints },
   },
