@@ -10,6 +10,7 @@ export {
   Price,
   Rate,
   Spinner,
+  Sticky,
   Tag,
   Tile,
 } from './core';
