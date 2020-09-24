@@ -53,7 +53,7 @@ const CloseIcon = () => (
   </svg>
 );
 
-export const ProductColors = () => {
+export const Filters = () => {
   const [drawerOpen, setDrawerOpen] = useState(true);
   const [selectedColors, setSelectedColors] = useState([]);
 
