@@ -75,13 +75,13 @@ const GroupStyled = styled.div`
           }
 
           & > *:first-child {
-            margin-right: ${gap * 0.25}rem;
             margin-left: 0;
+            margin-right: ${gap * 0.25}rem;
           }
 
           & > *:last-child {
-            margin-left: ${gap * 0.25}rem;
             margin-right: 0;
+            margin-left: ${gap * 0.25}rem;
           }
         `;
       default:
@@ -94,13 +94,13 @@ const GroupStyled = styled.div`
           }
 
           & > *:first-child {
-            margin-top: ${gap * 0.25}rem;
-            margin-bottom: 0;
+            margin-top: 0;
+            margin-bottom: ${gap * 0.25}rem;
           }
 
           & > *:last-child {
-            margin-top: ${gap * 0.25}rem;
             margin-bottom: 0;
+            margin-top: ${gap * 0.25}rem;
           }
         `;
     }
