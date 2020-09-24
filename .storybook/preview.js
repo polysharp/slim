@@ -6,8 +6,7 @@ import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 
 import { ThemeProvider } from 'styled-components';
 
-import defaultTheme from '../src/theme';
-import GlobalStyle from '../src/core/style';
+import { defaultTheme, GlobalStyle } from '../src';
 
 addParameters({
   viewport: {
