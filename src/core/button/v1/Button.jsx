@@ -31,7 +31,7 @@ const ButtonStyled = styled.button`
         `;
   }};
 
-  ${({ theme, color, variant }) => {
+  ${({ theme, color, variant, isSelected }) => {
     switch (variant) {
       case 'text':
         return css`
@@ -49,7 +49,9 @@ const ButtonStyled = styled.button`
         `;
       case 'outlined':
         return css`
-          border-color: ${theme.Button.colors[color].outlined.default};
+          border-color: ${isSelected
+            ? theme.Button.colors[color].outlined.selected
+            : theme.Button.colors[color].outlined.default};
           color: ${getTextColor('#FFFFFF')};
 
           &:hover,
@@ -107,6 +109,7 @@ const Button = ({
   pressKeyCode,
   isPressable,
   isDoubleClickable,
+  isSelected,
   isLoading,
   isDisabled,
 }) => {
@@ -151,6 +154,7 @@ const Button = ({
       evenPadding={evenPadding}
       onClick={(e) => handleClick(e)}
       onKeyPress={(e) => handlePress(e)}
+      isSelected={isSelected}
       isLoading={isLoading}
       disabled={isDisabled}
     >
@@ -222,6 +226,10 @@ Button.propTypes = {
   */
   isDoubleClickable: PropTypes.bool,
   /**
+    Is the button selected ?
+  */
+  isSelected: PropTypes.bool,
+  /**
     Is the button loading ?
   */
   isLoading: PropTypes.bool,
@@ -245,6 +253,7 @@ Button.defaultProps = {
   pressKeyCode: 13,
   isPressable: true,
   isDoubleClickable: false,
+  isSelected: false,
   isLoading: false,
   isDisabled: false,
 };

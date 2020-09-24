@@ -7,16 +7,19 @@ const defaultTheme = {
         text: {
           default: colors['light-primary'],
           hover: colors['dark-primary'],
+          selected: colors['light-primary'],
           outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
         },
         outlined: {
           default: colors['light-primary'],
           hover: colors['dark-primary'],
+          selected: colors['light-primary'],
           outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
         },
         contained: {
           default: colors['light-primary'],
           hover: colors['dark-primary'],
+          selected: colors['light-primary'],
           outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
         },
       },
@@ -24,16 +27,19 @@ const defaultTheme = {
         text: {
           default: colors['light-secondary'],
           hover: colors['dark-secondary'],
+          selected: colors['light-primary'],
           outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
         },
         outlined: {
           default: colors['light-secondary'],
           hover: colors['dark-secondary'],
+          selected: colors['light-primary'],
           outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
         },
         contained: {
           default: colors['light-secondary'],
           hover: colors['dark-secondary'],
+          selected: colors['light-primary'],
           outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
         },
       },
@@ -41,16 +47,19 @@ const defaultTheme = {
         text: {
           default: colors.black,
           hover: colors['light-black'],
+          selected: colors['light-primary'],
           outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
         },
         outlined: {
           default: colors.black,
           hover: colors['light-black'],
+          selected: colors['light-primary'],
           outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
         },
         contained: {
           default: colors.black,
           hover: colors['light-black'],
+          selected: colors['light-primary'],
           outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
         },
       },
@@ -58,16 +67,19 @@ const defaultTheme = {
         text: {
           default: colors.white,
           hover: colors['light-white'],
+          selected: colors['light-primary'],
           outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
         },
         outlined: {
           default: colors.white,
           hover: colors['light-white'],
+          selected: colors['light-primary'],
           outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
         },
         contained: {
           default: colors.white,
           hover: colors['light-white'],
+          selected: colors['light-primary'],
           outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
         },
       },
