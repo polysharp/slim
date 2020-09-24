@@ -6,7 +6,7 @@ import { Button } from 'core/inputs';
 import Rate from './Rate';
 
 export default {
-  title: 'Core/Contents/Rate',
+  title: 'V1/Core/Contents/Rate',
   decorators: [withKnobs],
   parameters: {
     component: Rate,

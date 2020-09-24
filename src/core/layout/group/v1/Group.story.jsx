@@ -5,7 +5,7 @@ import { Button, IconButton } from 'core/inputs';
 import Group from './Group';
 
 export default {
-  title: 'Core/Layout/Group',
+  title: 'V1/Core/Layout/Group',
   decorators: [],
   parameters: {
     component: Group,

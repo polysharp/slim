@@ -5,7 +5,7 @@ import { withKnobs, number, select } from '@storybook/addon-knobs';
 import Price from './Price';
 
 export default {
-  title: 'Core/Contents',
+  title: 'V1/Core/Contents',
   decorators: [withKnobs],
   parameters: {
     component: Price,

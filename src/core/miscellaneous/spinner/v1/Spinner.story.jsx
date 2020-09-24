@@ -4,7 +4,7 @@ import React from 'react';
 import Spinner from './Spinner';
 
 export default {
-  title: 'Core/Miscellaneous',
+  title: 'V1/Core/Miscellaneous',
   decorators: [],
   parameters: {
     component: Spinner,

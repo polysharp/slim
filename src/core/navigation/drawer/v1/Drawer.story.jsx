@@ -6,7 +6,7 @@ import { Group } from 'core/layout';
 import Drawer from './Drawer';
 
 export default {
-  title: 'Core/Navigation/Drawer',
+  title: 'V1/Core/Navigation/Drawer',
   decorators: [],
   parameters: {
     component: Drawer,

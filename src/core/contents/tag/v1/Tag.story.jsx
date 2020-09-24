@@ -5,7 +5,7 @@ import { withKnobs, select, color, text } from '@storybook/addon-knobs';
 import Tag from './Tag';
 
 export default {
-  title: 'Core/Contents/Tag',
+  title: 'V1/Core/Contents/Tag',
   decorators: [withKnobs],
   parameters: {
     component: Tag,
